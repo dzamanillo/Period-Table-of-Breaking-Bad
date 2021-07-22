@@ -10,7 +10,7 @@ function getCharacterInfo() {
             .then(post => {
                 
                 for (var i = 0; i < post.length - 1; i++) {
-                    // console.log(post[i].name);
+                    console.log(post[i]);
                     charactersList[i] = post[i].name;
                     };
                     console.log(charactersList);
