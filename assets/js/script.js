@@ -14,12 +14,15 @@ function getCharacterInfo() {
                     console.log(post[i]);
                     charactersList[i] = post[i].name;
                     
-                    var newElement = document.createElement('button');
+                    var newElement = document.createElement('div');
                     newElement.id = charactersList[i]; 
                     newElement.className = "character";
                     newElement.textContent = charactersList[i];
                     document.body.appendChild(newElement);
-                    console.log('this is working ' + i + ' !');
+                    newElement.addEventListener('click', function() {
+                        console.log("You have clicked " + this.textContent);
+                        alert("You have clicked " + this.textContent);
+                    })
                                     
                     
                     
