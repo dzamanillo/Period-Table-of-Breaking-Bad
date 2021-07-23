@@ -13,25 +13,50 @@ function getCharacterInfo() {
                 for (var i = 0; i < post.length - 1; i++) {
                     console.log(post[i]);
                     charactersList[i] = post[i].name;
+                    
+                    var newElement = document.createElement('button');
+                    newElement.id = charactersList[i]; 
+                    newElement.className = "character";
+                    newElement.textContent = charactersList[i];
+                    document.body.appendChild(newElement);
+                    console.log('this is working ' + i + ' !');
+                                    
+                    
+                    
+                    // var newDiv = document.createElement('div');
+                    // document.getElementById('character-list').appendChild(newDiv);
                     };
-                    console.log(charactersList);
-              
-                    document.getElementById('characters-list').textContent = charactersList;
-                
-                
+
+                    // document.getElementById('characters-list').textContent = charactersList;
             });
     
         } else {
             throw new Error('Something went wrong on api server!');
-    }
-    
+    }  
 })
-    
-    
 };
 
 getCharacterInfo();
 
+console.log(charactersList);
+
+// charactersList.forEach(function() {
+//     var characterDiv = document.createElement('div').textContent = [i];
+//     document.getElementById('characters-list').appendChild(characterDiv);
+// })
+
+// function makeCharacterDivs() {
+// for (var i = 0; i < charactersList.length - 1; i++) {
+//     var newElement = document.createElement('div');
+//     newElement.id = charactersList[i]; 
+//     newElement.className = "character";
+//     newElement.innerHtml = charactersList[i];
+//     document.body.appendChild(newElement);
+//     console.log('this is working ' + i + ' !');
+// }
+// };
+
+// makeCharacterDivs();
 
 
 function getCharacterQuotes() {
