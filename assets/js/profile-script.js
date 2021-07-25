@@ -3,6 +3,9 @@ var dropDownEl = document.querySelector("#character-dropdown");
 var subBtnEl = document.querySelector("#sub-btn");
 var characterId;
 var url = "https://www.breakingbadapi.com/api/characters";
+var favBtn = document.querySelector("#fav-btn");
+var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
 
 //Dropdown builder
 fetch(url).then(function (response) {
@@ -236,7 +239,19 @@ function getCharacterQuotes() {
 	);
 }
 
+// Add to favorites in localStorage
+favBtn.addEventListener("click", function() {
+	// alert(characterId);
+	// characterIdValue.push(this.getAttribute("value"));
+	// localStorage.setItem("value", JSON.stringify(characterIdValue));
+	// window.location.href = "profile.html";
+	if (favorites.indexOf(characterId) === -1) {
+	favorites.push(characterId);
+	localStorage.setItem("favorites", JSON.stringify(favorites));
+	}
+	console.log(favorites);
 
+});
 
 //! ON LOAD
 containerReset();
