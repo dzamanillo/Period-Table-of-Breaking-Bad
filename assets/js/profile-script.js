@@ -1,7 +1,48 @@
 var profileContainerEl = document.querySelector("#profile-container");
 var dropDownEl = document.querySelector("#character-dropdown");
 var subBtnEl = document.querySelector("#sub-btn");
+var characterName;
 var characterId;
+// var charNameIdArr = [characterName, characterId]
+
+// // connect characterId to char_id
+// function getCharacterInfo() {
+//     fetch('https://www.breakingbadapi.com/api/characters')
+//     .then(response => {
+//     //     if (response.status === 200) {
+//             return response.json()
+//             .then(post => {
+//                 for (var i = 0; i < post.length - 1; i++) {
+//                     // console.log(post[i].name + " : " + post[i].char_id);
+// 					characterName = post[i].name;
+// 					characterId = post[i].char_id;
+// 					charNameIdArr.push(characterName + " : " + characterId);
+//     //                 charactersList[i] = post[i].name;
+                    
+//     //                 var newElement = document.createElement('div');
+//     //                 newElement.id = charactersList[i]; 
+//     //                 newElement.className = "character";
+//     //                 newElement.textContent = charactersList[i];
+//     //                 document.body.appendChild(newElement);
+//     //                 newElement.addEventListener('click', function() {
+//     //                     console.log("You have clicked " + this.textContent);
+//     //                     alert("You have clicked " + this.textContent);
+//     //                 })
+//     //                 };
+//     //         });
+//     //     } else {
+//     //         throw new Error('Something went wrong on api server!');
+//     // }  
+// 				}
+// 			})
+// 		})
+// 	}
+
+// getCharacterInfo();
+
+// // 
+// console.log(charNameIdArr);
+
 
 var url = "https://www.breakingbadapi.com/api/characters";
 
@@ -34,12 +75,19 @@ var getId = function () {
 var buildProfile = function () {
 	fetch(url).then(function (response) {
 		response = response.json().then(function (data) {
+			// for (var i = 0; i < data.length - 1; i++) {
+				characterId = data.char_id;
+				console.log(data.char_id);
+			// }
+			
+			
 			if (!characterId) {
 				characterId = 0;
 			}
 
 			//character name
 			var characterNameTitle = document.createElement("h3");
+			// characterNameTitle.textContent = data[characterId].name;
 			characterNameTitle.textContent = data[characterId].name;
 
 			profileContainerEl.append(characterNameTitle);
