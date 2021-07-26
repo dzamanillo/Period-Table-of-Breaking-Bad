@@ -66,7 +66,7 @@ function getCharacterQuotes() {
 					var author = post[0].author;
 					console.log(quote + ";" + author);
 					document.getElementById("random-quote").textContent =
-						'"' + quote + '"' + " : " + author;
+						'"' + quote + '"' + " - " + author;
 				});
 			} else {
 				throw new Error("Something went wrong on api server!");

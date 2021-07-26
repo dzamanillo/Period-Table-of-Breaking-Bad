@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+
 :root {
   --main-bg-color: #000;
   --main-text-color: #fff;
@@ -19,6 +20,24 @@ main {
 }
 
 /* Header Style Placeholder */
+
+@font-face {
+    font-family: breakingBadFont;
+    src: url(assets/fonts/Averia-Serif-Libre.ttf)   
+}
+
+header {
+    color: var(--accent-green);
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'breakingBadFont';
+    animation: badMove 5s infinite;
+} 
+
+@keyframes badMove {
+    50% {text-shadow: 1px 2px 3px yellowgreen;}
+}
+
 .background {
   height: 250px;
   border: #016901 solid 0.5rem;
@@ -67,3 +86,4 @@ main {
 .container {
   height: 100vh;
 }
+
