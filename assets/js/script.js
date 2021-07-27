@@ -1,4 +1,5 @@
 var charactersList = [];
+var characterListEl = document.querySelector("#characters-list");
 
 function getCharacterInfo() {
 	fetch("https://www.breakingbadapi.com/api/characters").then((response) => {
@@ -13,7 +14,7 @@ function getCharacterInfo() {
 					newElement.className = "character m-1";
 					newElement.setAttribute("value", i);
 					newElement.textContent = charactersList[i];
-					document.body.appendChild(newElement);
+					characterListEl.appendChild(newElement);
 					newElement.addEventListener("click", function () {
 						console.log("You have clicked " + this.textContent);
 						characterIdValue = [];

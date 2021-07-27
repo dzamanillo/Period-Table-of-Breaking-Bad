@@ -6,7 +6,6 @@ var url = "https://www.breakingbadapi.com/api/characters";
 var favBtn = document.querySelector("#fav-btn");
 var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-
 //Dropdown builder
 fetch(url).then(function (response) {
 	response = response.json().then(function (data) {
@@ -220,7 +219,6 @@ var subBtnHandler = function () {
 // @ Sub Btn
 subBtnEl.addEventListener("click", subBtnHandler);
 
-
 function getCharacterQuotes() {
 	fetch("https://breaking-bad-quotes.herokuapp.com/v1/quotes").then(
 		(response) => {
@@ -230,7 +228,7 @@ function getCharacterQuotes() {
 					var author = post[0].author;
 					console.log(quote + ";" + author);
 					document.getElementById("random-quote").textContent =
-						'"' + quote + '"' + " - " + author;
+						~'"' + quote + '"' + " - " + author;
 				});
 			} else {
 				throw new Error("Something went wrong on api server!");
@@ -240,17 +238,16 @@ function getCharacterQuotes() {
 }
 
 // Add to favorites in localStorage
-favBtn.addEventListener("click", function() {
+favBtn.addEventListener("click", function () {
 	// alert(characterId);
 	// characterIdValue.push(this.getAttribute("value"));
 	// localStorage.setItem("value", JSON.stringify(characterIdValue));
 	// window.location.href = "profile.html";
 	if (favorites.indexOf(characterId) === -1) {
-	favorites.push(characterId);
-	localStorage.setItem("favorites", JSON.stringify(favorites));
+		favorites.push(characterId);
+		localStorage.setItem("favorites", JSON.stringify(favorites));
 	}
 	console.log(favorites);
-
 });
 
 //! ON LOAD
