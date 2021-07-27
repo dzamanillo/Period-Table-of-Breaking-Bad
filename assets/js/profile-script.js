@@ -241,16 +241,25 @@ function getCharacterQuotes() {
 
 // Add to favorites in localStorage
 favBtn.addEventListener("click", function() {
-	// alert(characterId);
-	// characterIdValue.push(this.getAttribute("value"));
-	// localStorage.setItem("value", JSON.stringify(characterIdValue));
-	// window.location.href = "profile.html";
-	if (favorites.indexOf(characterId) === -1) {
-	favorites.push(characterId);
-	localStorage.setItem("favorites", JSON.stringify(favorites));
+	// Check to see if characterId is defined
+	if (characterId) {
+		// If array is empty, force first entry...
+		if (favorites.length === 0){
+			localStorage["favorites"] = JSON.stringify(favorites);
+		}
+		// ...otherwise update array with new value, up to a maximum of 8
+		if (favorites.indexOf(characterId) === -1 && favorites.length < 8) {
+			favorites.push(characterId);
+			localStorage.setItem("favorites", JSON.stringify(favorites));
+		}
+		console.log(favorites);
 	}
-	console.log(favorites);
-
+	// If characterId is not defined, retrieve it from localStorage
+	else {
+		characterId = JSON.parse(localStorage.getItem("value"));
+		characterId = characterId[0];
+		return characterId;
+	}
 });
 
 //! ON LOAD
