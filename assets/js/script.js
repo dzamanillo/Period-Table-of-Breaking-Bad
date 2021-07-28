@@ -2,7 +2,9 @@ var charactersList = [];
 var characterListEl = document.querySelector("#characters-list");
 
 function getCharacterInfo() {
-	fetch("https://www.breakingbadapi.com/api/characters").then((response) => {
+	fetch("https://www.breakingbadapi.com/api/characters", {
+		mode: "no-cors",
+	}).then((response) => {
 		if (response.status === 200) {
 			return response.json().then((post) => {
 				for (var i = 0; i < post.length - 1; i++) {
