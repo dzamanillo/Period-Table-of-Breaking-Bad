@@ -1,13 +1,89 @@
 * {
-	margin: 0px;
-	padding: 0px;
-	box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
 :root {
-	--main-bg-color: #000;
-	--main-text-color: #fff;
-	--accent-green: #016936;
-	--accent-yellow: #efc311;
-	--hover-color: #91def6;
+  --main-bg-color: #000;
+  --main-text-color: #fff;
+  --accent-green: #016936;
+  --accent-yellow: #efc311;
+  --hover-color: #91def6;
+}
+
+main {
+  background-color: var(--main-bg-color);
+  border: #016901 solid 0.5rem;
+  border-top: none;
+}
+
+/* Header Style Placeholder */
+
+@font-face {
+  font-family: breakingBadFont;
+  src: url(../fonts/Averia-Serif-Libre.ttf);
+}
+
+header {
+  color: var(--accent-green);
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "breakingBadFont";
+  animation: badMove 5s infinite;
+}
+
+@keyframes badMove {
+  50% {
+    text-shadow: 1px 2px 3px yellowgreen;
+  }
+}
+
+.background {
+  height: 250px;
+  border: #016901 solid 0.5rem;
+  background-image: url("../imgs/1016590_breaking-bad-jesse-pinkman-wallpaper-by-blockstabfatality-on_3840x1080_h.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100vw;
+  background-color: var(--main-bg-color);
+}
+
+#character-dropdown {
+  width: 100vw;
+}
+
+/* Profile Page Styling */
+#profile-container {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+#profile-img {
+  max-width: 10rem;
+  border: var(--accent-yellow) solid 0.25rem;
+}
+
+#profile-container h3 {
+  margin-top: 1rem;
+  color: var(--accent-green);
+}
+
+#fav-btn:hover,
+#home-btn:hover,
+#sub-btn:hover {
+  background-color: var(--hover-color);
+}
+
+/* Favorites Page Styles */
+#fav-img {
+  max-width: 12rem;
+  border: var(--accent-yellow) solid 0.25rem;
+  height: 200px;
+}
+
+.container {
+  height: 100vh;
 }
