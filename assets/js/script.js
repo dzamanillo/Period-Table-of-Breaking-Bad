@@ -1,5 +1,5 @@
 var charactersList = [];
-var characterListEl = document.querySelector("#characters-list")
+var characterListEl = document.querySelector("#characters-list");
 
 function getCharacterInfo() {
 	fetch("https://www.breakingbadapi.com/api/characters").then((response) => {
@@ -14,9 +14,10 @@ function getCharacterInfo() {
 					characterCard.className = "m-1";
 					characterCard.setAttribute("value", i);
 
-					characterCard.classList="fav-card col-12 col-md-3 col-lg-2 d-flex align-items-center flex-column";
+					characterCard.classList =
+						"fav-card col-12 col-md-3 col-lg-2 d-flex align-items-center flex-column";
 					//characterCard.textContent = charactersList[i];
-				
+
 					characterCard.addEventListener("click", function () {
 						console.log("You have clicked " + this.textContent);
 						characterIdValue = [];
@@ -25,19 +26,16 @@ function getCharacterInfo() {
 						localStorage.setItem("value", JSON.stringify(characterIdValue));
 						window.location.href = "profile.html";
 					});
-					var characterImg=document.createElement("img");
+					var characterImg = document.createElement("img");
 					characterImg.setAttribute("src", post[i].img);
 					characterImg.setAttribute("alt", post[i].name);
-					characterImg.setAttribute("id", "fav-img")
+					characterImg.setAttribute("id", "fav-img");
 
-					var characterName=document.createElement("p");
-					characterName.textContent=post[i].name;
+					var characterName = document.createElement("p");
+					characterName.textContent = post[i].name;
 
-					characterCard.append(characterImg,characterName);
+					characterCard.append(characterImg, characterName);
 					characterListEl.appendChild(characterCard);
-
-
-
 
 					// var newDiv = document.createElement('div');
 					// document.getElementById('character-list').appendChild(newDiv);
@@ -74,21 +72,21 @@ console.log(charactersList);
 // makeCharacterDivs();
 
 function getCharacterQuotes() {
-	fetch("https://breaking-bad-quotes.herokuapp.com/v1/quotes").then(
-		(response) => {
-			if (response.status === 200) {
-				return response.json().then((post) => {
-					var quote = post[0].quote;
-					var author = post[0].author;
-					console.log(quote + ";" + author);
-					document.getElementById("random-quote").textContent =
-						'"' + quote + '"' + " - " + author;
-				});
-			} else {
-				throw new Error("Something went wrong on api server!");
-			}
+	fetch("https://breaking-bad-quotes.herokuapp.com/v1/quotes", {
+		mode: "no-cors",
+	}).then((response) => {
+		if (response.status === 200) {
+			return response.json().then((post) => {
+				var quote = post[0].quote;
+				var author = post[0].author;
+				console.log(quote + ";" + author);
+				document.getElementById("random-quote").textContent =
+					'"' + quote + '"' + " - " + author;
+			});
+		} else {
+			throw new Error("Something went wrong on api server!");
 		}
-	);
+	});
 }
 
 getCharacterQuotes();
