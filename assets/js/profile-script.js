@@ -262,13 +262,18 @@ favBtn.addEventListener("click", function () {
 			favorites.push(characterId);
 			localStorage.setItem("favorites", JSON.stringify(favorites));
 		}
-		console.log(favorites);
 	}
 	// If characterId is not defined, retrieve it from localStorage
 	else {
 		characterId = JSON.parse(localStorage.getItem("value"));
 		characterId = characterId[0];
-		return characterId;
+		if (favorites.length === 0) {
+			localStorage["favorites"] = JSON.stringify(favorites);
+		}
+		if (favorites.indexOf(characterId) === -1 && favorites.length < 8) {
+			favorites.push(characterId);
+			localStorage.setItem("favorites", JSON.stringify(favorites));
+		}
 	}
 });
 
