@@ -6,7 +6,6 @@ var url = "https://www.breakingbadapi.com/api/characters";
 var favBtn = document.querySelector("#fav-btn");
 var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
-
 //Dropdown builder
 fetch(url).then(function (response) {
 	response = response.json().then(function (data) {
@@ -42,11 +41,9 @@ var buildProfile = function () {
 
 			console.log(characterId);
 
-			//character name
-			var characterNameTitle = document.createElement("h3");
-			characterNameTitle.textContent = data[characterId].name;
-
-			profileContainerEl.append(characterNameTitle);
+			var imgContainer = document.createElement("div");
+			// imgContainer.classList.add("m-2");
+			var statContainer = document.createElement("div");
 
 			//place img
 			imgUrl = data[characterId].img;
@@ -54,7 +51,13 @@ var buildProfile = function () {
 			profileImg.setAttribute("src", imgUrl);
 			profileImg.setAttribute("id", "profile-img");
 
-			profileContainerEl.append(profileImg);
+			imgContainer.append(profileImg);
+
+			//character name
+			var characterNameTitle = document.createElement("h3");
+			characterNameTitle.textContent = data[characterId].name;
+
+			statContainer.append(characterNameTitle);
 
 			//occupation
 			var occupationDiv = document.createElement("div");
@@ -70,18 +73,18 @@ var buildProfile = function () {
 				occupationDiv.append(job);
 			}
 
-			profileContainerEl.append(occupationDiv);
+			statContainer.append(occupationDiv);
 
 			//nickname
 			var nicknameTitle = document.createElement("h3");
 			nicknameTitle.textContent = "Nickname:";
 
-			profileContainerEl.append(nicknameTitle);
+			statContainer.append(nicknameTitle);
 
 			var nickname = document.createElement("h4");
 			nickname.textContent = data[characterId].nickname;
 
-			profileContainerEl.append(nickname);
+			statContainer.append(nickname);
 
 			//seasons
 			var seasonsDiv = document.createElement("div");
@@ -98,7 +101,7 @@ var buildProfile = function () {
 				seasonsDiv.append(season);
 			}
 
-			profileContainerEl.append(seasonsDiv);
+			statContainer.append(seasonsDiv);
 
 			//portrayed by
 			var actorTitle = document.createElement("h3");
@@ -108,7 +111,7 @@ var buildProfile = function () {
 			var actor = data[characterId].portrayed;
 			actorName.textContent = actor;
 
-			profileContainerEl.append(actorTitle, actorName);
+			statContainer.append(actorTitle, actorName);
 
 			//status
 			var statusTitle = document.createElement("h3");
@@ -118,7 +121,9 @@ var buildProfile = function () {
 			var end = data[characterId].status;
 			statusEnd.textContent = end;
 
-			profileContainerEl.append(statusTitle, statusEnd);
+			statContainer.append(statusTitle, statusEnd);
+
+			profileContainerEl.append(imgContainer, statContainer);
 		});
 	});
 };
@@ -129,11 +134,9 @@ var buildProfileSubmit = function () {
 		response = response.json().then(function (data) {
 			console.log(characterId);
 
-			//character name
-			var characterNameTitle = document.createElement("h3");
-			characterNameTitle.textContent = data[characterId].name;
-
-			profileContainerEl.append(characterNameTitle);
+			var imgContainer = document.createElement("div");
+			// imgContainer.classList.add("m-2");
+			var statContainer = document.createElement("div");
 
 			//place img
 			imgUrl = data[characterId].img;
@@ -141,7 +144,13 @@ var buildProfileSubmit = function () {
 			profileImg.setAttribute("src", imgUrl);
 			profileImg.setAttribute("id", "profile-img");
 
-			profileContainerEl.append(profileImg);
+			imgContainer.append(profileImg);
+
+			//character name
+			var characterNameTitle = document.createElement("h3");
+			characterNameTitle.textContent = data[characterId].name;
+
+			statContainer.append(characterNameTitle);
 
 			//occupation
 			var occupationDiv = document.createElement("div");
@@ -157,18 +166,18 @@ var buildProfileSubmit = function () {
 				occupationDiv.append(job);
 			}
 
-			profileContainerEl.append(occupationDiv);
+			statContainer.append(occupationDiv);
 
 			//nickname
 			var nicknameTitle = document.createElement("h3");
 			nicknameTitle.textContent = "Nickname:";
 
-			profileContainerEl.append(nicknameTitle);
+			statContainer.append(nicknameTitle);
 
 			var nickname = document.createElement("h4");
 			nickname.textContent = data[characterId].nickname;
 
-			profileContainerEl.append(nickname);
+			statContainer.append(nickname);
 
 			//seasons
 			var seasonsDiv = document.createElement("div");
@@ -185,7 +194,7 @@ var buildProfileSubmit = function () {
 				seasonsDiv.append(season);
 			}
 
-			profileContainerEl.append(seasonsDiv);
+			statContainer.append(seasonsDiv);
 
 			//portrayed by
 			var actorTitle = document.createElement("h3");
@@ -195,7 +204,7 @@ var buildProfileSubmit = function () {
 			var actor = data[characterId].portrayed;
 			actorName.textContent = actor;
 
-			profileContainerEl.append(actorTitle, actorName);
+			statContainer.append(actorTitle, actorName);
 
 			//status
 			var statusTitle = document.createElement("h3");
@@ -205,7 +214,9 @@ var buildProfileSubmit = function () {
 			var end = data[characterId].status;
 			statusEnd.textContent = end;
 
-			profileContainerEl.append(statusTitle, statusEnd);
+			statContainer.append(statusTitle, statusEnd);
+
+			profileContainerEl.append(imgContainer, statContainer);
 		});
 	});
 };
@@ -219,7 +230,6 @@ var subBtnHandler = function () {
 
 // @ Sub Btn
 subBtnEl.addEventListener("click", subBtnHandler);
-
 
 function getCharacterQuotes() {
 	fetch("https://breaking-bad-quotes.herokuapp.com/v1/quotes").then(
@@ -240,11 +250,11 @@ function getCharacterQuotes() {
 }
 
 // Add to favorites in localStorage
-favBtn.addEventListener("click", function() {
+favBtn.addEventListener("click", function () {
 	// Check to see if characterId is defined
 	if (characterId) {
 		// If array is empty, force first entry...
-		if (favorites.length === 0){
+		if (favorites.length === 0) {
 			localStorage["favorites"] = JSON.stringify(favorites);
 		}
 		// ...otherwise update array with new value, up to a maximum of 8
