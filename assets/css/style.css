@@ -105,3 +105,7 @@ header {
 .container {
 	height: 100vh;
 }
+.homepage {
+	background-color: #000;
+	color: white
+}
