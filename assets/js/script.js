@@ -1,4 +1,5 @@
 var charactersList = [];
+var characterListEl = document.querySelector("#characters-list")
 
 function getCharacterInfo() {
 	fetch("https://www.breakingbadapi.com/api/characters").then((response) => {
@@ -8,13 +9,15 @@ function getCharacterInfo() {
 					console.log(post[i]);
 					charactersList[i] = post[i].name;
 
-					var newElement = document.createElement("div");
-					newElement.id = charactersList[i];
-					newElement.className = "character m-1";
-					newElement.setAttribute("value", i);
-					newElement.textContent = charactersList[i];
-					document.body.appendChild(newElement);
-					newElement.addEventListener("click", function () {
+					var characterCard = document.createElement("div");
+					characterCard.id = charactersList[i];
+					characterCard.className = "m-1";
+					characterCard.setAttribute("value", i);
+
+					characterCard.classList="fav-card col-12 col-md-3 col-lg-2 d-flex align-items-center flex-column";
+					//characterCard.textContent = charactersList[i];
+				
+					characterCard.addEventListener("click", function () {
 						console.log("You have clicked " + this.textContent);
 						characterIdValue = [];
 						//Local storage for building profile page
@@ -22,6 +25,19 @@ function getCharacterInfo() {
 						localStorage.setItem("value", JSON.stringify(characterIdValue));
 						window.location.href = "profile.html";
 					});
+					var characterImg=document.createElement("img");
+					characterImg.setAttribute("src", post[i].img);
+					characterImg.setAttribute("alt", post[i].name);
+					characterImg.setAttribute("id", "fav-img")
+
+					var characterName=document.createElement("p");
+					characterName.textContent=post[i].name;
+
+					characterCard.append(characterImg,characterName);
+					characterListEl.appendChild(characterCard);
+
+
+
 
 					// var newDiv = document.createElement('div');
 					// document.getElementById('character-list').appendChild(newDiv);
@@ -46,11 +62,11 @@ console.log(charactersList);
 
 // function makeCharacterDivs() {
 // for (var i = 0; i < charactersList.length - 1; i++) {
-//     var newElement = document.createElement('div');
-//     newElement.id = charactersList[i];
-//     newElement.className = "character";
-//     newElement.innerHtml = charactersList[i];
-//     document.body.appendChild(newElement);
+//     var characterCard = document.createElement('div');
+//     characterCard.id = charactersList[i];
+//     characterCard.className = "character";
+//     characterCard.innerHtml = charactersList[i];
+//     document.body.appendChild(characterCard);
 //     console.log('this is working ' + i + ' !');
 // }
 // };
