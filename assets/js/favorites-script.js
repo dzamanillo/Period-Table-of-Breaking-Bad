@@ -8,7 +8,7 @@ var favDiv = document.querySelector("#fav-row");
 
 fetch(url).then (function(response) {
     response = response.json().then(function (data) {
-        console.log(data);
+        // console.log(data);
         for (var i = 0; i < favorites.length; i++) {
             var favoriteId = favorites[i];
             var favCard = document.createElement("div");
@@ -23,7 +23,7 @@ fetch(url).then (function(response) {
             favName.textContent = data[favoriteId].name;
             favName.classList = "text-light text-center";
 
-            console.log(favoriteId);
+            // console.log(favoriteId);
 
             cards.appendChild(favDiv);
             favDiv.appendChild(favCard);
