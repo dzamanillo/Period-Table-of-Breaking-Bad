@@ -231,23 +231,23 @@ var subBtnHandler = function () {
 // @ Sub Btn
 subBtnEl.addEventListener("click", subBtnHandler);
 
-function getCharacterQuotes() {
-	fetch("https://breaking-bad-quotes.herokuapp.com/v1/quotes").then(
-		(response) => {
-			if (response.status === 200) {
-				return response.json().then((post) => {
-					var quote = post[0].quote;
-					var author = post[0].author;
-					// console.log(quote + ";" + author);
-					document.getElementById("random-quote").textContent =
-						'"' + quote + '"' + " - " + author;
-				});
-			} else {
-				throw new Error("Something went wrong on api server!");
-			}
-		}
-	);
-}
+// function getCharacterQuotes() {
+// 	fetch("https://breaking-bad-quotes.herokuapp.com/v1/quotes").then(
+// 		(response) => {
+// 			if (response.status === 200) {
+// 				return response.json().then((post) => {
+// 					var quote = post[0].quote;
+// 					var author = post[0].author;
+// 					// console.log(quote + ";" + author);
+// 					document.getElementById("random-quote").textContent =
+// 						'"' + quote + '"' + " - " + author;
+// 				});
+// 			} else {
+// 				throw new Error("Something went wrong on api server!");
+// 			}
+// 		}
+// 	);
+// }
 
 // Add to favorites in localStorage
 favBtn.addEventListener("click", function () {
@@ -280,4 +280,4 @@ favBtn.addEventListener("click", function () {
 //! ON LOAD
 containerReset();
 buildProfile();
-getCharacterQuotes();
+// getCharacterQuotes();
