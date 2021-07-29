@@ -6,7 +6,7 @@ function getCharacterInfo() {
 		if (response.status === 200) {
 			return response.json().then((post) => {
 				for (var i = 0; i < post.length - 1; i++) {
-					console.log(post[i]);
+					// console.log(post[i]);
 					charactersList[i] = post[i].name;
 
 					var characterCard = document.createElement("div");
@@ -19,7 +19,7 @@ function getCharacterInfo() {
 					//characterCard.textContent = charactersList[i];
 
 					characterCard.addEventListener("click", function () {
-						console.log("You have clicked " + this.textContent);
+						// console.log("You have clicked " + this.textContent);
 						characterIdValue = [];
 						//Local storage for building profile page
 						characterIdValue.push(this.getAttribute("value"));
@@ -51,7 +51,7 @@ function getCharacterInfo() {
 
 getCharacterInfo();
 
-console.log(charactersList);
+// console.log(charactersList);
 
 // charactersList.forEach(function() {
 //     var characterDiv = document.createElement('div').textContent = [i];
@@ -91,7 +91,7 @@ function getCharacterQuotes() {
                                 return response.json().then((post) => {
                                     var current = post.weather[0].description;
                                     var temp = Math.round(post.main.temp);
-                                    console.log(current + "+" + temp);
+                                    // console.log(current + "+" + temp);
                                     document.getElementById("random-quote").textContent =
                                         'current conditions in Albuquerque: ' + current + ' temperature: ' + temp;
                                 });

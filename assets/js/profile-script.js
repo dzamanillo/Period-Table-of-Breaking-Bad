@@ -9,7 +9,7 @@ var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 //Dropdown builder
 fetch(url).then(function (response) {
 	response = response.json().then(function (data) {
-		console.log(data);
+		// console.log(data);
 
 		for (var i = 0; i < data.length; i++) {
 			var option = document.createElement("option");
@@ -39,7 +39,7 @@ var buildProfile = function () {
 		response = response.json().then(function (data) {
 			var characterId = JSON.parse(localStorage.getItem("value"));
 
-			console.log(characterId);
+			// console.log(characterId);
 
 			var imgContainer = document.createElement("div");
 			// imgContainer.classList.add("m-2");
@@ -132,7 +132,7 @@ var buildProfile = function () {
 var buildProfileSubmit = function () {
 	fetch(url).then(function (response) {
 		response = response.json().then(function (data) {
-			console.log(characterId);
+			// console.log(characterId);
 
 			var imgContainer = document.createElement("div");
 			// imgContainer.classList.add("m-2");
@@ -238,7 +238,7 @@ function getCharacterQuotes() {
 				return response.json().then((post) => {
 					var quote = post[0].quote;
 					var author = post[0].author;
-					console.log(quote + ";" + author);
+					// console.log(quote + ";" + author);
 					document.getElementById("random-quote").textContent =
 						'"' + quote + '"' + " - " + author;
 				});
