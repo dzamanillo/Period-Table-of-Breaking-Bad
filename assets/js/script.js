@@ -74,21 +74,42 @@ console.log(charactersList);
 // makeCharacterDivs();
 
 function getCharacterQuotes() {
-	fetch("https://breaking-bad-quotes.herokuapp.com/v1/quotes").then(
-		(response) => {
-			if (response.status === 200) {
-				return response.json().then((post) => {
-					var quote = post[0].quote;
-					var author = post[0].author;
-					console.log(quote + ";" + author);
-					document.getElementById("random-quote").textContent =
-						'"' + quote + '"' + " - " + author;
-				});
-			} else {
-				throw new Error("Something went wrong on api server!");
-			}
-		}
-	);
-}
+	// fetch("https://breaking-bad-quotes.herokuapp.com/v1/quotes").then(
+	// 	(response) => {
+	// 		if (response.status === 200) {
+	// 			return response.json().then((post) => {
+	// 				var quote = post[0].quote;
+	// 				var author = post[0].author;
+	// 				console.log(quote + ";" + author);
+	// 				document.getElementById("random-quote").textContent =
+	// 					'"' + quote + '"' + " - " + author;
+	// 			});
+	// 		} else {
+				// throw new Error("Something went wrong on api server!");
+                
+                    fetch('https://api.openweathermap.org/data/2.5/weather?q=albuquerque&units=imperial&appid=3e3a8f9018bbc2c4f3ff15318e09efc6').then(
+                        (response) => {
+                            if (response.status === 200) {
+                                return response.json().then((post) => {
+                                    var current = post.weather[0].description;
+                                    var temp = Math.round(post.main.temp);
+                                    console.log(current + "+" + temp);
+                                    document.getElementById("random-quote").textContent =
+                                        'current conditions in Albuquerque: ' + current + ' temperature: ' + temp;
+                                });
+                            } else {
+                                throw new Error("Something went wrong on api server!");
+                            }
+                        }
+                    );
+                }
+			
+// 		}
+// 	);
+// }
 
 getCharacterQuotes();
+
+
+
+        
