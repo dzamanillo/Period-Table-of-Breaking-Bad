@@ -34,6 +34,10 @@ function getCharacterInfo() {
 					var characterName = document.createElement("p");
 					characterName.textContent = post[i].name;
 
+					if (i === 38) {
+						characterImg.setAttribute("src", "https://vignette.wikia.nocookie.net/breakingbad/images/0/08/Tumblr_lqddc79K9S1qc5omm.png/revision/latest?cb=20111012055605");
+					}
+
 					characterCard.append(characterImg, characterName);
 					characterListEl.appendChild(characterCard);
 

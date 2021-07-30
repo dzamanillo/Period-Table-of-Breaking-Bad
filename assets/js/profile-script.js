@@ -121,6 +121,10 @@ var buildProfile = function () {
 			var end = data[characterId].status;
 			statusEnd.textContent = end;
 
+			if (characterId === 38) {
+				profileImg.setAttribute("src", "https://vignette.wikia.nocookie.net/breakingbad/images/0/08/Tumblr_lqddc79K9S1qc5omm.png/revision/latest?cb=20111012055605");
+			}
+
 			statContainer.append(statusTitle, statusEnd);
 
 			profileContainerEl.append(imgContainer, statContainer);
@@ -209,6 +213,10 @@ var buildProfileSubmit = function () {
 			//status
 			var statusTitle = document.createElement("h3");
 			statusTitle.textContent = "Status:";
+
+			if (characterId === 38) {
+				profileImg.setAttribute("src", "https://vignette.wikia.nocookie.net/breakingbad/images/0/08/Tumblr_lqddc79K9S1qc5omm.png/revision/latest?cb=20111012055605");
+			}
 
 			var statusEnd = document.createElement("h4");
 			var end = data[characterId].status;
