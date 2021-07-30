@@ -24,6 +24,9 @@ fetch(url).then (function(response) {
             favName.classList = "text-light text-center";
 
             // console.log(favoriteId);
+            if (favoriteId === "38") {
+				favImg.setAttribute("src", "https://vignette.wikia.nocookie.net/breakingbad/images/0/08/Tumblr_lqddc79K9S1qc5omm.png/revision/latest?cb=20111012055605");
+			}
 
             cards.appendChild(favDiv);
             favDiv.appendChild(favCard);
