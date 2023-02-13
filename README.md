@@ -21,11 +21,11 @@ This is a one stop shop for checking in on your favorite Breaking Bad characters
 
 #### Website:
 
-https://dzamanillo.github.io/sturdy-broccoli/
+https://dzamanillo.github.io/Period-Table-of-Breaking-Bad/
 
 #### Github:
 
-https://github.com/dzamanillo/sturdy-broccoli
+https://github.com/dzamanillo/Period-Table-of-Breaking-Bad
 
 ## Screenshots
 
